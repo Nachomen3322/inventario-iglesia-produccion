@@ -12,7 +12,6 @@ import {
   FileSpreadsheet,
 } from "lucide-react";
 import { format } from "date-fns";
-import { es } from "date-fns/locale";
 
 export type AuditLog = {
   id_log: number;
@@ -151,7 +150,7 @@ export default function AuditTable({
   };
 
   const formatDateUI = (dateInput: Date | string) =>
-    format(new Date(dateInput), "dd MMM, yyyy", { locale: es });
+    format(new Date(dateInput), "dd MMM, yyyy");
   const formatTimeUI = (dateInput: Date | string) =>
     format(new Date(dateInput), "hh:mm:ss aa");
 
