@@ -10,7 +10,6 @@ import {
   Trash2,
 } from "lucide-react";
 import { format, isPast, isToday } from "date-fns";
-import { es } from "date-fns/locale";
 import RegisterLoanModal, { type ArticleOption } from "./RegisterLoanModal";
 import { eliminarPrestamo } from "@/app/(dashboard)/prestamos/actions";
 import EditLoanModal from "./EditLoanModal";
@@ -117,7 +116,7 @@ export default function LoansTable({
       d.getUTCMonth(),
       d.getUTCDate(),
     );
-    return format(dateLocalPure, "dd 'de' MMM yyyy", { locale: es });
+    return format(dateLocalPure, "dd 'de' MMM yyyy");
   };
 
   const handleEliminar = (id: number) => {
