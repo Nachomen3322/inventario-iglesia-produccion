@@ -172,9 +172,9 @@ export default function ScannerFace({
   };
 
   return (
-    <div className="flex flex-col items-center gap-6">
-      <div className="relative bg-[#eeeeee] rounded-lg overflow-hidden w-[640px] h-[480px] flex items-center justify-center border border-[#1A3A5F] shadow-xl">
-        <div className="absolute top-4 left-4 z-30 bg-[#eeeeee] px-3 py-1 rounded text-sm font-mono text-[#1A3A5F] border border-[#1A3A5F]">
+    <div className="flex flex-col items-center gap-4 w-full max-w-[640px] mx-auto px-2">
+      <div className="relative bg-[#eeeeee] rounded-lg overflow-hidden w-full aspect-[4/3] flex items-center justify-center border border-[#1A3A5F] shadow-xl">
+        <div className="absolute top-4 left-4 z-30 bg-[#eeeeee] px-3 py-1 rounded text-xs sm:text-sm font-mono text-[#1A3A5F] border border-[#1A3A5F] max-w-[90%] truncate">
           {status}
         </div>
 
@@ -182,6 +182,7 @@ export default function ScannerFace({
           ref={videoRef}
           autoPlay
           muted
+          playsInline
           onPlay={() => {
             requestRef.current = requestAnimationFrame(detectFace);
           }}
@@ -197,7 +198,7 @@ export default function ScannerFace({
           <button
             onClick={startCamera}
             disabled={!human}
-            className="z-30 px-8 py-3 bg-[#0B3B60] hover:bg-[#3478c5] disabled:bg-gray-800 rounded font-bold transition-all text-[#F8F9FA]"
+            className="z-30 px-6 sm:px-8 py-3 text-sm sm:text-base bg-[#0B3B60] hover:bg-[#3478c5] disabled:bg-gray-800 rounded font-bold transition-all text-[#F8F9FA]"
           >
             {human ? "ENCENDER ESCÁNER" : "CARGANDO IA..."}
           </button>
@@ -205,8 +206,8 @@ export default function ScannerFace({
       </div>
 
       {isCameraActive && (
-        <div className="w-[640px] flex justify-between items-center bg-gray-900 p-4 rounded-lg border border-gray-800">
-          <span className="text-[#F8F9FA] text-sm font-mono">
+        <div className="w-full flex flex-col sm:flex-row justify-between items-center gap-4 bg-gray-900 p-4 rounded-lg border border-gray-800">
+          <span className="text-[#F8F9FA] text-sm font-mono text-center sm:text-left">
             Estado:{" "}
             <span className={canCapture ? "text-[#5896dd]" : "text-amber-500"}>
               {canCapture ? "Listo" : "Ajustando..."}

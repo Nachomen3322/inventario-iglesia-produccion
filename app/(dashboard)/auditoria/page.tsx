@@ -26,7 +26,7 @@ export default async function AuditoriaPage() {
     <div className="flex flex-col h-full bg-gray-50">
       <Header title="Registros de auditoría" />
 
-      <main className="flex-1 p-8 overflow-auto">
+      <main className="flex-1 p-4 md:p-8 overflow-y-auto flex flex-col">
         <AuditTable initialData={logsData} currentUserRole={rolActual} />
       </main>
     </div>

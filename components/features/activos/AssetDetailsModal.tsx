@@ -47,11 +47,11 @@ export default function AssetDetailsModal({
 
   return (
     <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/50 backdrop-blur-sm p-4">
-      <div className="bg-white rounded-2xl shadow-2xl w-full max-w-2xl overflow-hidden relative">
+      <div className="bg-white rounded-2xl shadow-2xl w-full max-w-2xl overflow-hidden relative flex flex-col max-h-[90vh]">
         {/* Cabecera del Modal */}
-        <div className="bg-slate-50 px-8 py-6 border-b border-gray-100 flex justify-between items-center">
+        <div className="bg-slate-50 px-6 py-5 md:px-8 md:py-6 border-b border-gray-100 flex justify-between items-center shrink-0">
           <div className="flex items-center gap-4">
-            <div className="p-3 bg-white rounded-xl shadow-sm border border-gray-100">
+            <div className="p-2 md:p-3 bg-white rounded-xl shadow-sm border border-gray-100 hidden sm:block">
               <Package className="h-6 w-6 text-slate-700" />
             </div>
             <div>
@@ -70,8 +70,8 @@ export default function AssetDetailsModal({
         </div>
 
         {/* Contenido del Detalle */}
-        <div className="p-8">
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+        <div className="p-6 md:p-8 overflow-y-auto custom-scrollbar flex-1">
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-6 md:gap-8">
             <div className="space-y-6">
               <h4 className="text-xs font-bold text-gray-400 uppercase tracking-widest border-b pb-2">
                 Especificaciones
@@ -163,8 +163,8 @@ export default function AssetDetailsModal({
           </div>
 
           {/* Sección de Código QR (en caso de aplicarlo en un futuro) */}
-          <div className="mt-10 p-6 bg-slate-50 rounded-xl border border-dashed border-gray-200 flex items-center justify-between">
-            <div className="space-y-1">
+          <div className="mt-8 md:mt-10 p-5 md:p-6 bg-slate-50 rounded-xl border border-dashed flex flex-col sm:flex-row items-center justify-between gap-4">
+            <div className="space-y-1 text-center sm:text-left">
               <p className="text-sm font-bold text-gray-900">
                 Identificador Único (QR)
               </p>
@@ -172,14 +172,14 @@ export default function AssetDetailsModal({
                 Utilice este código para inventarios rápidos y auditorías.
               </p>
             </div>
-            <div className="h-16 w-16 bg-white border border-gray-200 rounded flex items-center justify-center text-[10px] text-gray-300 font-bold">
+            <div className="h-16 w-16 bg-white border flex items-center justify-center text-[10px] text-gray-300 font-bold shrink-0">
               QR CODE
             </div>
           </div>
         </div>
 
         {/* Pie del Modal */}
-        <div className="px-8 py-4 bg-gray-50 border-t border-gray-100 flex justify-end">
+        <div className="px-6 py-4 md:px-8 bg-gray-50 border-t border-gray-100 flex justify-end shrink-0">
           <button
             onClick={onClose}
             className="px-6 py-2 bg-slate-800 text-white text-sm font-medium rounded-lg hover:bg-slate-700 transition-colors shadow-sm"

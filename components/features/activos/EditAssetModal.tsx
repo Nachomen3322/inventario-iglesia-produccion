@@ -95,8 +95,8 @@ export default function EditAssetModal({
   };
 
   return (
-    <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/50 backdrop-blur-sm">
-      <div className="bg-white rounded-xl shadow-lg w-full max-w-md p-6 relative">
+    <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/50 backdrop-blur-sm p-4">
+      <div className="bg-white rounded-xl shadow-xl w-full max-w-md p-6 relative flex flex-col max-h-[90vh]">
         <button
           onClick={onClose}
           type="button"
@@ -115,7 +115,10 @@ export default function EditAssetModal({
           </div>
         )}
 
-        <form onSubmit={handleSubmit} className="space-y-4">
+        <form
+          onSubmit={handleSubmit}
+          className="space-y-4 overflow-y-auto custom-scrollbar pr-2 flex-1"
+        >
           <div>
             <label className="block text-sm font-medium text-gray-700 mb-1">
               Nombre del artículo
@@ -130,7 +133,7 @@ export default function EditAssetModal({
             />
           </div>
 
-          <div className="grid grid-cols-2 gap-4">
+          <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
             <div>
               <label className="block text-sm font-medium text-gray-700 mb-1">
                 Cantidad
@@ -180,43 +183,45 @@ export default function EditAssetModal({
             </select>
           </div>
 
-          <div>
-            <label className="block text-sm font-medium text-gray-700 mb-1">
-              Categoría
-            </label>
-            <select
-              name="id_categoria"
-              value={formData.id_categoria}
-              onChange={handleChange}
-              className="w-full px-3 py-2 text-[#333333] border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 outline-none text-sm bg-white"
-            >
-              {categorias.map((cat) => (
-                <option key={cat.id} value={cat.id}>
-                  {cat.nombre}
-                </option>
-              ))}
-            </select>
+          <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+            <div>
+              <label className="block text-sm font-medium text-gray-700 mb-1">
+                Categoría
+              </label>
+              <select
+                name="id_categoria"
+                value={formData.id_categoria}
+                onChange={handleChange}
+                className="w-full px-3 py-2 text-[#333333] border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 outline-none text-sm bg-white"
+              >
+                {categorias.map((cat) => (
+                  <option key={cat.id} value={cat.id}>
+                    {cat.nombre}
+                  </option>
+                ))}
+              </select>
+            </div>
+
+            <div>
+              <label className="block text-sm font-medium text-gray-700 mb-1">
+                Ubicación Interna
+              </label>
+              <select
+                name="id_ubicacion"
+                value={formData.id_ubicacion}
+                onChange={handleChange}
+                className="w-full px-3 py-2 text-[#333333] border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 outline-none text-sm bg-white"
+              >
+                {ubicaciones.map((ubi) => (
+                  <option key={ubi.id} value={ubi.id}>
+                    {ubi.nombre}
+                  </option>
+                ))}
+              </select>
+            </div>
           </div>
 
-          <div>
-            <label className="block text-sm font-medium text-gray-700 mb-1">
-              Ubicación Interna
-            </label>
-            <select
-              name="id_ubicacion"
-              value={formData.id_ubicacion}
-              onChange={handleChange}
-              className="w-full px-3 py-2 text-[#333333] border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 outline-none text-sm bg-white"
-            >
-              {ubicaciones.map((ubi) => (
-                <option key={ubi.id} value={ubi.id}>
-                  {ubi.nombre}
-                </option>
-              ))}
-            </select>
-          </div>
-
-          <div className="mt-6 flex justify-end gap-3 pt-4 border-t border-gray-100">
+          <div className="mt-6 flex flex-col-reverse sm:flex-row justify-end gap-3 pt-4 border-t border-gray-100 shrink-0">
             <button
               type="button"
               onClick={onClose}

@@ -1,16 +1,7 @@
 "use client";
 
 import { useState } from "react";
-import {
-  Search,
-  Calendar,
-  Download,
-  ChevronLeft,
-  ChevronRight,
-  MoreHorizontal,
-  X,
-  FileSpreadsheet,
-} from "lucide-react";
+import { Search, Calendar, Download, X, FileSpreadsheet } from "lucide-react";
 import { format } from "date-fns";
 
 export type AuditLog = {
@@ -183,8 +174,8 @@ export default function AuditTable({
     <>
       {esAdmin ? (
         <>
-          <div className="bg-white rounded-xl shadow-sm border border-gray-200 flex flex-col h-full min-h-0">
-            <div className="p-6 border-b border-gray-200">
+          <div className="bg-white rounded-xl shadow-sm border border-gray-200 flex flex-col flex-1 min-h-[500px] md:min-h-0">
+            <div className="p-4 md:p-6 border-b border-gray-200 flex flex-col lg:flex-row justify-between items-start lg:items-center gap-4 shrink-0">
               <div className="flex flex-col md:flex-row justify-between items-start md:items-center gap-4">
                 <div>
                   <h2 className="text-xl font-bold text-gray-900">
@@ -195,8 +186,8 @@ export default function AuditTable({
                   </p>
                 </div>
 
-                <div className="flex gap-3 w-full md:w-auto">
-                  <div className="relative flex-1 md:w-64">
+                <div className="flex flex-col sm:flex-row gap-3 w-full lg:w-auto">
+                  <div className="relative w-full sm:w-64">
                     <Search className="absolute left-3 top-1/2 -translate-y-1/2 text-gray-400 h-4 w-4" />
                     <input
                       type="text"
@@ -289,14 +280,20 @@ export default function AuditTable({
               </div>
             </div>
 
-            <div className="flex-1 overflow-x-auto min-h-0">
-              <table className="w-full text-left border-collapse">
+            <div className="flex-1 overflow-x-auto custom-scrollbar">
+              <table className="w-full text-left border-collapse min-w-[900px]">
                 <thead>
                   <tr className="text-[11px] font-bold text-gray-400 uppercase tracking-widest border-b border-gray-100 bg-white">
-                    <th className="px-6 py-4">Fecha y Hora</th>
-                    <th className="px-6 py-4">Usuario</th>
-                    <th className="px-6 py-4">Acción Realizada</th>
-                    <th className="px-6 py-4 text-right">Dirección IP</th>
+                    <th className="px-6 py-4 whitespace-nowrap">
+                      Fecha y Hora
+                    </th>
+                    <th className="px-6 py-4 whitespace-nowrap">Usuario</th>
+                    <th className="px-6 py-4 whitespace-nowrap">
+                      Acción Realizada
+                    </th>
+                    <th className="px-6 py-4 whitespace-nowrap text-right">
+                      Dirección IP
+                    </th>
                   </tr>
                 </thead>
                 <tbody className="divide-y divide-gray-100">
@@ -304,7 +301,7 @@ export default function AuditTable({
                     <tr>
                       <td
                         colSpan={4}
-                        className="px-6 py-12 text-center text-gray-500"
+                        className="px-6 py-12 whitespace-nowrap text-center text-gray-500"
                       >
                         No hay registros de auditoría disponibles.
                       </td>
@@ -315,7 +312,7 @@ export default function AuditTable({
                         key={log.id_log}
                         className="hover:bg-gray-50/50 transition-colors"
                       >
-                        <td className="px-6 py-4">
+                        <td className="px-6 py-4 whitespace-nowrap">
                           <div className="text-sm font-semibold text-gray-900">
                             {formatDateUI(log.fecha_hora)}
                           </div>
@@ -323,7 +320,7 @@ export default function AuditTable({
                             {formatTimeUI(log.fecha_hora)}
                           </div>
                         </td>
-                        <td className="px-6 py-4">
+                        <td className="px-6 py-4 whitespace-nowrap">
                           <div className="flex items-center gap-3">
                             <div className="h-9 w-9 rounded-full bg-slate-200 flex items-center justify-center text-slate-500 font-bold text-xs uppercase overflow-hidden">
                               {log.nombre_usuario.substring(0, 2)}
@@ -338,14 +335,14 @@ export default function AuditTable({
                             </div>
                           </div>
                         </td>
-                        <td className="px-6 py-4">
+                        <td className="px-6 py-4 whitespace-nowrap">
                           <span
                             className={`px-3 py-1.5 rounded-md text-xs font-medium inline-flex items-center gap-1.5 ${getActionStyle(log.accion_realizada)}`}
                           >
                             {log.accion_realizada}
                           </span>
                         </td>
-                        <td className="px-6 py-4 text-sm text-gray-400 font-mono text-right">
+                        <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-400 font-mono text-right">
                           {log.direccion_ip || "Desconocida"}
                         </td>
                       </tr>

@@ -68,8 +68,8 @@ export default function UserManagement({
   };
 
   return (
-    <section className="bg-white border border-gray-200 rounded-xl p-6 shadow-sm overflow-auto">
-      <div className="p-6 border-b border-gray-100 flex justify-between items-center">
+    <section className="bg-white rounded-xl shadow-sm border border-gray-200 flex flex-col flex-1 min-h-[500px] md:min-h-0">
+      <div className="p-4 md:p-6 border-b border-gray-200 flex flex-col lg:flex-row justify-between items-start lg:items-center gap-4 shrink-0">
         <div>
           <h2 className="text-lg font-semibold text-gray-900">
             Gestión de Usuarios (RBAC)

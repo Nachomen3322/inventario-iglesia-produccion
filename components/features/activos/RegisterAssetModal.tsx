@@ -70,8 +70,8 @@ export default function RegisterAssetModal({
   };
 
   return (
-    <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/50 backdrop-blur-sm">
-      <div className="bg-white rounded-xl shadow-lg w-full max-w-md p-6 relative">
+    <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/50 backdrop-blur-sm p-4">
+      <div className="bg-white rounded-xl shadow-xl w-full max-w-md p-6 relative flex flex-col max-h-[90vh]">
         <button
           onClick={onClose}
           className="absolute top-4 right-4 text-gray-400 hover:text-gray-600 transition-colors"
@@ -91,7 +91,10 @@ export default function RegisterAssetModal({
           </div>
         )}
 
-        <form onSubmit={handleSubmit} className="space-y-4">
+        <form
+          onSubmit={handleSubmit}
+          className="space-y-4 overflow-y-auto custom-scrollbar pr-2 flex-1"
+        >
           <div>
             <label
               htmlFor="nombre"
@@ -111,7 +114,7 @@ export default function RegisterAssetModal({
             />
           </div>
 
-          <div className="grid grid-cols-2 gap-4">
+          <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
             <div>
               <label
                 htmlFor="cantidad"
@@ -151,51 +154,53 @@ export default function RegisterAssetModal({
             </div>
           </div>
 
-          <div>
-            <label
-              htmlFor="id_categoria"
-              className="block text-sm font-medium text-gray-700 mb-1"
-            >
-              Categoría
-            </label>
-            <select
-              id="id_categoria"
-              name="id_categoria"
-              value={formData.id_categoria}
-              onChange={handleChange}
-              className="w-full px-3 py-2 border text-[#333333] border-gray-300 rounded-lg focus:ring-2 focus:ring-slate-800 outline-none text-sm bg-white"
-            >
-              {categorias.map((cat) => (
-                <option key={cat.id} value={cat.id}>
-                  {cat.nombre}
-                </option>
-              ))}
-            </select>
+          <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+            <div>
+              <label
+                htmlFor="id_categoria"
+                className="block text-sm font-medium text-gray-700 mb-1"
+              >
+                Categoría
+              </label>
+              <select
+                id="id_categoria"
+                name="id_categoria"
+                value={formData.id_categoria}
+                onChange={handleChange}
+                className="w-full px-3 py-2 border text-[#333333] border-gray-300 rounded-lg focus:ring-2 focus:ring-slate-800 outline-none text-sm bg-white"
+              >
+                {categorias.map((cat) => (
+                  <option key={cat.id} value={cat.id}>
+                    {cat.nombre}
+                  </option>
+                ))}
+              </select>
+            </div>
+
+            <div>
+              <label
+                htmlFor="id_ubicacion"
+                className="block text-sm font-medium text-gray-700 mb-1"
+              >
+                Ubicación Interna
+              </label>
+              <select
+                id="id_ubicacion"
+                name="id_ubicacion"
+                value={formData.id_ubicacion}
+                onChange={handleChange}
+                className="w-full px-3 py-2 border text-[#333333] border-gray-300 rounded-lg focus:ring-2 focus:ring-slate-800 outline-none text-sm bg-white"
+              >
+                {ubicaciones.map((ubi) => (
+                  <option key={ubi.id} value={ubi.id}>
+                    {ubi.nombre}
+                  </option>
+                ))}
+              </select>
+            </div>
           </div>
 
-          <div>
-            <label
-              htmlFor="id_ubicacion"
-              className="block text-sm font-medium text-gray-700 mb-1"
-            >
-              Ubicación Interna
-            </label>
-            <select
-              id="id_ubicacion"
-              name="id_ubicacion"
-              value={formData.id_ubicacion}
-              onChange={handleChange}
-              className="w-full px-3 py-2 border text-[#333333] border-gray-300 rounded-lg focus:ring-2 focus:ring-slate-800 outline-none text-sm bg-white"
-            >
-              {ubicaciones.map((ubi) => (
-                <option key={ubi.id} value={ubi.id}>
-                  {ubi.nombre}
-                </option>
-              ))}
-            </select>
-          </div>
-
-          <div className="mt-6 flex justify-end gap-3 pt-4 border-t border-gray-100">
+          <div className="mt-6 flex flex-col-reverse sm:flex-row justify-end gap-3 pt-4 border-t border-gray-100 shrink-0">
             <button
               type="button"
               onClick={onClose}

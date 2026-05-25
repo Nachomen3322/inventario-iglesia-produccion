@@ -113,7 +113,7 @@ export default async function PanelPage() {
     <div className="flex flex-col h-full bg-gray-50">
       <Header title="Resumen del panel" />
 
-      <main className="flex-1 p-8 overflow-hidden flex flex-col">
+      <main className="flex-1 p-4 md:p-8 overflow-y-auto flex flex-col">
         <DashboardView
           kpis={kpis}
           recentAssets={actividadReciente}

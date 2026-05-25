@@ -63,7 +63,7 @@ export default async function PrestamosPage() {
   return (
     <div className="flex flex-col h-full bg-gray-50">
       <Header title="Gestión de Préstamos" />
-      <main className="flex-1 p-8 overflow-auto">
+      <main className="flex-1 p-4 md:p-8 overflow-y-auto flex flex-col">
         <LoansTable
           initialData={prestamos}
           articulosDisponibles={articulosDisponibles}

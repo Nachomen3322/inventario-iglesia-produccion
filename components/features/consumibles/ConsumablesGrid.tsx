@@ -144,9 +144,9 @@ export default function ConsumablesGrid({
 
   return (
     <>
-      <div className="space-y-6">
+      <div className="bg-white rounded-xl shadow-sm border border-gray-200 flex flex-col flex-1 min-h-[500px] md:min-h-0">
         {/* Toolbar */}
-        <div className="flex flex-col md:flex-row justify-between items-start md:items-center gap-4">
+        <div className="p-4 md:p-6 border-b border-gray-200 flex flex-col lg:flex-row justify-between items-start lg:items-center gap-4 shrink-0">
           <div className="flex items-center gap-3">
             <h2 className="text-xl font-semibold text-gray-800">
               Inventario de Consumibles
@@ -156,8 +156,8 @@ export default function ConsumablesGrid({
             </span>
           </div>
 
-          <div className="flex gap-3 w-full md:w-auto">
-            <div className="relative flex-1 md:w-72">
+          <div className="flex flex-col sm:flex-row gap-3 w-full lg:w-auto">
+            <div className="relative w-full sm:w-64">
               <Search className="absolute left-3 top-1/2 -translate-y-1/2 text-[#333333] h-4 w-4" />
               <input
                 type="text"
@@ -169,7 +169,7 @@ export default function ConsumablesGrid({
             </div>
 
             {/* Menú de Filtros */}
-            <div className="relative">
+            <div className="relative w-full sm:w-auto">
               <button
                 onClick={() => setIsFilterMenuOpen(!isFilterMenuOpen)}
                 className={`flex items-center gap-2 px-4 py-2 border rounded-lg transition-colors text-sm text-[#333333] font-medium ${activeFiltersCount > 0 ? "bg-blue-50 border-blue-200 text-blue-700" : "bg-white hover:bg-gray-50"}`}
@@ -183,7 +183,7 @@ export default function ConsumablesGrid({
               </button>
 
               {isFilterMenuOpen && (
-                <div className="absolute top-full right-0 mt-2 w-72 bg-white border border-gray-200 rounded-lg shadow-xl z-20 p-4">
+                <div className="absolute top-full right-0 mt-2 w-[calc(100vw-2rem)] sm:w-72 max-w-sm bg-white border rounded-lg shadow-xl z-20 p-4">
                   <div className="flex justify-between items-center mb-4">
                     <h3 className="font-semibold text-gray-800 text-sm">
                       Filtrar consumibles

@@ -161,10 +161,10 @@ export default function AssetsTable({
 
   return (
     <>
-      <div className="bg-white rounded-lg shadow-sm border border-gray-200">
-        <div className="p-6 border-b border-gray-200">
+      <div className="bg-white rounded-xl shadow-sm border border-gray-200 flex flex-col flex-1 min-h-[500px] md:min-h-0">
+        <div className="p-4 md:p-6 border-b border-gray-200 flex flex-col lg:flex-row justify-between items-start lg:items-center gap-4 shrink-0">
           <div className="flex justify-between items-center mb-4">
-            <div className="flex items-center gap-2">
+            <div className="flex items-center gap-3">
               <h2 className="text-xl font-semibold text-gray-800">
                 Inventario de activos fijos
               </h2>
@@ -174,8 +174,8 @@ export default function AssetsTable({
             </div>
           </div>
 
-          <div className="flex gap-4">
-            <div className="relative flex-1 max-w-md">
+          <div className="flex flex-col sm:flex-row gap-3 w-full lg:w-auto">
+            <div className="relative w-full sm:w-64">
               <Search className="absolute left-3 top-1/2 -translate-y-1/2 text-gray-400 h-4 w-4" />
               <input
                 type="text"
@@ -186,7 +186,7 @@ export default function AssetsTable({
               />
             </div>
 
-            <div className="relative">
+            <div className="relative w-full sm:w-auto">
               <button
                 onClick={() => setIsFilterMenuOpen(!isFilterMenuOpen)}
                 className={`flex items-center gap-2 px-4 py-2 border rounded-lg transition-colors text-sm font-medium
@@ -203,7 +203,7 @@ export default function AssetsTable({
 
               {/* Menú Desplegable de Filtros */}
               {isFilterMenuOpen && (
-                <div className="absolute top-full right-0 mt-2 w-72 bg-white border border-gray-200 rounded-lg shadow-xl z-20 p-4">
+                <div className="absolute top-full right-0 mt-2 w-[calc(100vw-2rem)] sm:w-72 max-w-sm bg-white border rounded-lg shadow-xl z-20 p-4">
                   <div className="flex justify-between items-center mb-4">
                     <h3 className="font-semibold text-gray-800 text-sm">
                       Filtrar inventario
@@ -308,10 +308,10 @@ export default function AssetsTable({
         </div>
 
         {/* Table */}
-        <div className="overflow-x-auto">
-          <table className="w-full text-left border-collapse">
+        <div className="flex-1 overflow-x-auto custom-scrollbar">
+          <table className="w-full text-left border-collapse min-w-[900px]">
             <thead>
-              <tr className="text-xs font-semibold text-gray-500 uppercase border-b border-gray-200">
+              <tr className="text-xs font-bold text-gray-400 uppercase tracking-wider border-b border-gray-100 bg-gray-50/50">
                 <th className="px-6 py-4">Nombre del artículo</th>
                 <th className="px-6 py-4">Cantidad</th>
                 <th className="px-6 py-4">Categoría</th>

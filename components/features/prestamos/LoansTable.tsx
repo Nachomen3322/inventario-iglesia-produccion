@@ -134,14 +134,14 @@ export default function LoansTable({
 
   return (
     <>
-      <div className="bg-white rounded-xl shadow-sm border border-gray-200">
-        <div className="p-6 border-b border-gray-200 flex flex-col md:flex-row justify-between items-start md:items-center gap-4">
+      <div className="bg-white rounded-xl shadow-sm border border-gray-200 flex flex-col flex-1 min-h-[500px] md:min-h-0">
+        <div className="p-4 md:p-6 border-b border-gray-200 flex flex-col lg:flex-row justify-between items-start lg:items-center gap-4 shrink-0">
           <h2 className="text-lg font-semibold text-gray-900">
             Préstamos Activos
           </h2>
 
-          <div className="flex gap-3 w-full md:w-auto">
-            <div className="relative flex-1 md:w-64">
+          <div className="flex flex-col sm:flex-row gap-3 w-full lg:w-auto">
+            <div className="relative w-full sm:w-64">
               <Search className="absolute left-3 top-1/2 -translate-y-1/2 text-gray-400 h-4 w-4" />
               <input
                 type="text"
@@ -239,19 +239,21 @@ export default function LoansTable({
         </div>
 
         {/* Tabla de Datos */}
-        <div className="overflow-x-auto min-h-[400px]">
-          <table className="w-full text-left border-collapse">
+        <div className="flex-1 overflow-x-auto custom-scrollbar">
+          <table className="w-full text-left border-collapse min-w-[900px]">
             <thead>
               <tr className="text-xs font-bold text-gray-400 uppercase tracking-wider border-b border-gray-100 bg-gray-50/50">
-                <th className="px-6 py-4">Artículo</th>
-                <th className="px-6 py-4">Cant.</th>
-                <th className="px-6 py-4">Destino Externo</th>
-                <th className="px-6 py-4">Responsable</th>
-                <th className="px-6 py-4">Autorizado Por</th>
-                <th className="px-6 py-4">Fecha Salida</th>
-                <th className="px-6 py-4">Retorno Esperado</th>
-                <th className="px-6 py-4">Estado</th>
-                <th className="px-6 py-4 text-center"></th>
+                <th className="px-6 py-4 whitespace-nowrap">Artículo</th>
+                <th className="px-6 py-4 whitespace-nowrap">Cant.</th>
+                <th className="px-6 py-4 whitespace-nowrap">Destino Externo</th>
+                <th className="px-6 py-4 whitespace-nowrap">Responsable</th>
+                <th className="px-6 py-4 whitespace-nowrap">Autorizado Por</th>
+                <th className="px-6 py-4 whitespace-nowrap">Fecha Salida</th>
+                <th className="px-6 py-4 whitespace-nowrap">
+                  Retorno Esperado
+                </th>
+                <th className="px-6 py-4 whitespace-nowrap">Estado</th>
+                <th className="px-6 py-4 whitespace-nowrap text-center"></th>
               </tr>
             </thead>
             <tbody className="divide-y divide-gray-100">
@@ -259,7 +261,7 @@ export default function LoansTable({
                 <tr>
                   <td
                     colSpan={9}
-                    className="px-6 py-12 text-center text-gray-500"
+                    className="px-6 py-12 whitespace-nowrap text-center text-gray-500"
                   >
                     No se encontraron préstamos activos.
                   </td>
@@ -273,39 +275,39 @@ export default function LoansTable({
                       key={loan.id}
                       className="hover:bg-gray-50/50 transition-colors"
                     >
-                      <td className="px-6 py-4">
+                      <td className="px-6 py-4 whitespace-nowrap">
                         <div className="flex items-center gap-3">
                           <span className="font-semibold text-gray-900 text-sm">
                             {loan.articulo_nombre}
                           </span>
                         </div>
                       </td>
-                      <td className="px-6 py-4 text-sm text-gray-600 font-medium">
+                      <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-600 font-medium">
                         {loan.cantidad_prestada}
                       </td>
-                      <td className="px-6 py-4 text-sm text-gray-600">
+                      <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-600">
                         {loan.destino_externo || "-"}
                       </td>
-                      <td className="px-6 py-4 text-sm text-gray-600">
+                      <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-600">
                         {loan.responsable || "-"}
                       </td>
-                      <td className="px-6 py-4 text-sm text-gray-600">
+                      <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-600">
                         {loan.autorizado_por || "-"}
                       </td>
-                      <td className="px-6 py-4 text-sm text-gray-600">
+                      <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-600">
                         {formatDateUI(loan.fecha_salida)}
                       </td>
-                      <td className="px-6 py-4 text-sm text-gray-600">
+                      <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-600">
                         {formatDateUI(loan.fecha_retorno_esperada)}
                       </td>
-                      <td className="px-6 py-4">
+                      <td className="px-6 py-4 whitespace-nowrap">
                         <span
                           className={`px-2.5 py-1 rounded-full text-[11px] font-bold tracking-wide ${status.style}`}
                         >
                           {status.text}
                         </span>
                       </td>
-                      <td className="px-6 py-4 text-center relative">
+                      <td className="px-6 py-4 whitespace-nowrap text-center relative">
                         <button
                           onClick={() =>
                             setMenuOpenId(

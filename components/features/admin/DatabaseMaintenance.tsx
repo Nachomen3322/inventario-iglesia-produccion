@@ -141,7 +141,7 @@ export default function DatabaseMaintenance({
         </div>
 
         <div className="p-6">
-          <div className="flex items-center justify-between p-4 border border-gray-100 rounded-xl bg-gray-50/50">
+          <div className="p-4 md:p-6 border-b border-gray-200 flex flex-col lg:flex-row justify-between items-start lg:items-center gap-4 shrink-0">
             <div className="flex items-start gap-4">
               <div className="p-2.5 bg-gray-100 rounded-lg text-gray-500 border border-gray-200">
                 <CircleStackIcon className="w-6 h-6" />

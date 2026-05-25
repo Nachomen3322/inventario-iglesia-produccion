@@ -12,6 +12,7 @@ import {
   Eye,
   ChevronLeft,
   ChevronRight,
+  X,
 } from "lucide-react";
 import type { SelectOption } from "../activos/RegisterAssetModal";
 import type { Asset } from "../activos/AssetsTable";
@@ -133,19 +134,19 @@ export default function DashboardView({
 
   return (
     <>
-      <div className="flex flex-col h-full space-y-6">
+      <div className="flex flex-col h-full space-y-4 md:space-y-6">
         {/* SECCIÓN 1: Tarjetas KPI */}
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 shrink-0">
-          <div className="bg-white p-6 rounded-xl border border-gray-100 shadow-sm">
-            <div className="flex justify-between items-start mb-4">
+          <div className="bg-white p-5 md:p-6 rounded-xl border border-gray-100 shadow-sm flex flex-col justify-between">
+            <div className="flex justify-between items-start mb-2 md:mb-4">
               <span className="text-sm font-medium text-gray-500">
                 Total de activos
               </span>
               <div className="p-2 bg-blue-50 text-blue-600 rounded-lg">
-                <Package className="h-5 w-5" />
+                <Package className="h-4 w-4 md:h-5 md:w-5" />
               </div>
             </div>
-            <div className="text-3xl font-bold text-gray-900">
+            <div className="text-2xl md:text-3xl font-bold text-gray-900">
               {kpis.totalActivos}
             </div>
             <div className="text-xs text-green-600 mt-2 font-medium">
@@ -153,42 +154,42 @@ export default function DashboardView({
             </div>
           </div>
 
-          <div className="bg-white p-6 rounded-xl border border-gray-100 shadow-sm">
-            <div className="flex justify-between items-start mb-4">
+          <div className="bg-white p-5 md:p-6 rounded-xl border border-gray-100 shadow-sm flex flex-col justify-between">
+            <div className="flex justify-between items-start mb-2 md:mb-4">
               <span className="text-sm font-medium text-gray-500">
                 Artículos prestados
               </span>
               <div className="p-2 bg-orange-50 text-orange-600 rounded-lg">
-                <ArrowRightLeft className="h-5 w-5" />
+                <ArrowRightLeft className="h-4 w-4 md:h-5 md:w-5" />
               </div>
             </div>
-            <div className="text-3xl font-bold text-gray-900">
+            <div className="text-2xl md:text-3xl font-bold text-gray-900">
               {kpis.articulosPrestados}
             </div>
-            <div className="text-xs text-gray-500 mt-2">
+            <div className="text-xs text-gray-500 mt-1 md:mt-2">
               Préstamos activos actualmente
             </div>
           </div>
 
-          <div className="bg-white p-6 rounded-xl border border-gray-100 shadow-sm">
-            <div className="flex justify-between items-start mb-4">
+          <div className="bg-white p-5 md:p-6 rounded-xl border border-gray-100 shadow-sm flex flex-col justify-between">
+            <div className="flex justify-between items-start mb-2 md:mb-4">
               <span className="text-sm font-medium text-gray-500">
                 Necesitan reparación
               </span>
               <div className="p-2 bg-red-50 text-red-600 rounded-lg">
-                <Wrench className="h-5 w-5" />
+                <Wrench className="h-4 w-4 md:h-5 md:w-5" />
               </div>
             </div>
-            <div className="text-3xl font-bold text-gray-900">
+            <div className="text-2xl md:text-3xl font-bold text-gray-900">
               {kpis.necesitanReparacion}
             </div>
-            <div className="text-xs text-red-500 mt-2 font-medium">
+            <div className="text-xs text-red-500 mt-1 md:mt-2 font-medium">
               Se requiere acción (Dañados)
             </div>
           </div>
 
-          <div className="bg-white p-6 rounded-xl border border-gray-100 shadow-sm">
-            <div className="flex justify-between items-start mb-4">
+          <div className="bg-white p-5 md:p-6 rounded-xl border border-gray-100 shadow-sm flex flex-col justify-between">
+            <div className="flex justify-between items-start mb-2 md:mb-4">
               <span className="text-sm font-medium text-gray-500">
                 Nivel de consumibles
               </span>
@@ -196,32 +197,30 @@ export default function DashboardView({
                 className={`p-2 rounded-lg ${kpis.nivelConsumibles === "Óptimo" ? "bg-green-50 text-green-600" : "bg-red-50 text-red-600"}`}
               >
                 {kpis.nivelConsumibles === "Óptimo" ? (
-                  <CheckCircle2 className="h-5 w-5" />
+                  <CheckCircle2 className="h-4 w-4 md:h-5 md:w-5" />
                 ) : (
-                  <AlertCircle className="h-5 w-5" />
+                  <AlertCircle className="h-4 w-4 md:h-5 md:w-5" />
                 )}
               </div>
             </div>
             <div
-              className={`text-xl font-bold mt-1 ${kpis.consumiblesStatusColor}`}
+              className={`text-lg md:text-xl font-bold mt-1  ${kpis.consumiblesStatusColor}`}
             >
               {kpis.nivelConsumibles}
             </div>
-            <div className="text-xs text-gray-500 mt-2">
+            <div className="text-xs text-gray-500 mt-1 md:mt-2">
               Estado global del stock
             </div>
           </div>
         </div>
 
-        {/* SECCIÓN 2: Tabla de Actividad (Diseño Fijo con Paginación) */}
-        <div className="bg-white rounded-xl shadow-sm border border-gray-200 flex flex-col flex-1 min-h-0">
-          {/* Toolbar */}
-          <div className="p-5 border-b border-gray-200 flex justify-between items-center shrink-0">
-            <h2 className="text-lg font-semibold text-gray-900">
+        <div className="bg-white rounded-xl shadow-sm border border-gray-200 flex flex-col flex-1 min-h-[500px] md:min-h-0 mt-6 md:mt-0">
+          <div className="p-4 md:p-5 border-b border-gray-200 flex flex-col lg:flex-row justify-between items-start lg:items-center gap-4 shrink-0">
+            <h2 className="text-base md:text-lg font-semibold text-gray-900">
               Actividad reciente de activos
             </h2>
-            <div className="flex gap-3">
-              <div className="relative w-64">
+            <div className="flex flex-col sm:flex-row gap-3 w-full lg:w-auto">
+              <div className="relative w-full sm:w-64">
                 <Search className="absolute left-3 top-1/2 -translate-y-1/2 text-gray-400 h-4 w-4" />
                 <input
                   type="text"
@@ -231,7 +230,7 @@ export default function DashboardView({
                   onChange={handleSearch}
                 />
               </div>
-              <div className="relative">
+              <div className="relative w-full sm:w-auto">
                 <button
                   onClick={() => setIsFilterMenuOpen(!isFilterMenuOpen)}
                   className={`flex items-center gap-2 px-4 py-2 border rounded-lg transition-colors text-sm text-[#333333] font-medium
@@ -247,7 +246,7 @@ export default function DashboardView({
                 </button>
 
                 {isFilterMenuOpen && (
-                  <div className="absolute top-full right-0 mt-2 w-72 bg-white border border-gray-200 rounded-lg shadow-xl z-20 p-4">
+                  <div className="absolute top-full right-0 mt-2 w-[calc(100vw-4rem)] sm:w-72 max-w-sm bg-white border border-gray-200 rounded-lg shadow-xl z-20 p-4">
                     <div className="flex justify-between items-center mb-4">
                       <h3 className="font-semibold text-gray-800 text-sm">
                         Filtrar actividad
@@ -327,15 +326,19 @@ export default function DashboardView({
           </div>
 
           {/* Tabla - Ocupa el espacio disponible pero no desborda */}
-          <div className="flex-1 overflow-x-auto">
-            <table className="w-full text-left border-collapse">
+          <div className="flex-1 overflow-x-auto custom-scrollbar">
+            <table className="w-full text-left border-collapse min-w-[800px]">
               <thead>
                 <tr className="text-xs font-bold text-gray-400 uppercase tracking-wider border-b border-gray-100 bg-gray-50/50">
-                  <th className="px-6 py-4">Detalles del Activo</th>
-                  <th className="px-6 py-4">Categoría</th>
-                  <th className="px-6 py-4">Ubicación</th>
-                  <th className="px-6 py-4">Estado</th>
-                  <th className="px-6 py-4 text-center">Acciones</th>
+                  <th className="px-6 py-4 whitespace-nowrap">
+                    Detalles del Activo
+                  </th>
+                  <th className="px-6 py-4 whitespace-nowrap">Categoría</th>
+                  <th className="px-6 py-4 whitespace-nowrap">Ubicación</th>
+                  <th className="px-6 py-4 whitespace-nowrap">Estado</th>
+                  <th className="px-6 py-4 whitespace-nowrap text-center">
+                    Acciones
+                  </th>
                 </tr>
               </thead>
               <tbody className="divide-y divide-gray-100">
@@ -354,7 +357,7 @@ export default function DashboardView({
                       key={asset.id}
                       className="hover:bg-gray-50/50 transition-colors"
                     >
-                      <td className="px-6 py-4">
+                      <td className="px-6 py-4 whitespace-nowrap">
                         <div>
                           <div className="font-semibold text-gray-900 text-sm">
                             {asset.nombre}
@@ -364,20 +367,20 @@ export default function DashboardView({
                           </div>
                         </div>
                       </td>
-                      <td className="px-6 py-4 text-sm text-gray-600">
+                      <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-600">
                         {asset.categoria}
                       </td>
-                      <td className="px-6 py-4 text-sm text-gray-600">
+                      <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-600">
                         {asset.ubicacion}
                       </td>
-                      <td className="px-6 py-4">
+                      <td className="px-6 py-4 whitespace-nowrap">
                         <span
                           className={`px-2.5 py-1 rounded-full text-[11px] font-bold tracking-wide ${getStatusColor(asset.estado_disponibilidad)}`}
                         >
                           {asset.estado_disponibilidad || "Disponible"}
                         </span>
                       </td>
-                      <td className="px-6 py-4 text-center">
+                      <td className="px-6 py-4 whitespace-nowrap text-center">
                         <button
                           onClick={() => setSelectedAsset(asset as Asset)}
                           className="text-gray-400 hover:text-[#111c2d] p-1 rounded transition-colors"
@@ -393,14 +396,13 @@ export default function DashboardView({
             </table>
           </div>
 
-          {/* Controles de Paginación en el Footer */}
           <div className="p-4 border-t border-gray-200 flex items-center justify-between bg-gray-50/50 shrink-0 rounded-b-xl">
-            <span className="text-sm text-gray-500">
+            <span className="text-xs text-gray-500">
               Página{" "}
               <span className="font-semibold text-gray-900">{currentPage}</span>{" "}
               de{" "}
               <span className="font-semibold text-gray-900">{totalPages}</span>
-              <span className="ml-2 hidden sm:inline">
+              <span className="ml-1 md:ml-2 hidden sm:inline">
                 ({filteredAssets.length} resultados)
               </span>
             </span>

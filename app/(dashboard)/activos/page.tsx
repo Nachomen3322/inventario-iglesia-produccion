@@ -65,7 +65,7 @@ export default async function ActivosFijosPage() {
   return (
     <div className="flex flex-col h-full bg-gray-50">
       <Header title="Activos fijos" />
-      <main className="flex-1 p-8 overflow-auto">
+      <main className="flex-1 p-4 md:p-8 overflow-y-auto flex flex-col">
         <AssetsTable
           initialData={data}
           totalItems={data.length}

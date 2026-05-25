@@ -37,7 +37,7 @@ export default function SecuritySettings({ userId }: SecuritySettingsProps) {
       </h2>
 
       {/* Calibración Biométrica */}
-      <div className="flex items-center justify-between py-4 border-b border-gray-100">
+      <div className="p-4 md:p-6 border-b border-gray-200 flex flex-col lg:flex-row justify-between items-start lg:items-center gap-4 shrink-0">
         <div>
           <h3 className="font-medium text-gray-900">
             Activacion/Calibración biométrica facial
@@ -51,7 +51,7 @@ export default function SecuritySettings({ userId }: SecuritySettingsProps) {
       </div>
 
       {/* Cierre Automático con Toggle */}
-      <div className="flex items-center justify-between py-4">
+      <div className="p-4 md:p-6 border-b border-gray-200 flex flex-col lg:flex-row justify-between items-start lg:items-center gap-4 shrink-0">
         <div>
           <h3 className="font-medium text-gray-900">
             Cierre automático de sesión

@@ -73,8 +73,8 @@ export default function RegisterConsumableModal({
   };
 
   return (
-    <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/50 backdrop-blur-sm">
-      <div className="bg-white rounded-xl shadow-lg w-full max-w-md p-6 relative">
+    <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/50 backdrop-blur-sm p-4">
+      <div className="bg-white rounded-xl shadow-xl w-full max-w-md p-6 relative flex flex-col max-h-[90vh]">
         <button
           onClick={onClose}
           type="button"
@@ -83,7 +83,7 @@ export default function RegisterConsumableModal({
           <X className="h-5 w-5" />
         </button>
 
-        <h3 className="text-lg font-semibold text-gray-900 mb-6">
+        <h3 className="text-xl font-bold text-gray-900 mb-6 shrink-0">
           Registrar nuevo consumible
         </h3>
 
@@ -93,7 +93,10 @@ export default function RegisterConsumableModal({
           </div>
         )}
 
-        <form onSubmit={handleSubmit} className="space-y-4">
+        <form
+          onSubmit={handleSubmit}
+          className="space-y-4 overflow-y-auto custom-scrollbar pr-2 flex-1"
+        >
           <div>
             <label className="block text-sm font-medium text-gray-700 mb-1">
               Nombre del artículo
@@ -109,7 +112,7 @@ export default function RegisterConsumableModal({
             />
           </div>
 
-          <div className="grid grid-cols-3 gap-4">
+          <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
             <div>
               <label className="block text-sm font-medium text-gray-700 mb-1">
                 Stock Inicial

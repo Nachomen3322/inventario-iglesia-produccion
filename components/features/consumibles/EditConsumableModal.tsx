@@ -97,8 +97,8 @@ export default function EditConsumableModal({
   };
 
   return (
-    <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/50 backdrop-blur-sm">
-      <div className="bg-white rounded-xl shadow-lg w-full max-w-md p-6 relative">
+    <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/50 backdrop-blur-sm p-4">
+      <div className="bg-white rounded-xl shadow-xl w-full max-w-md p-6 relative flex flex-col max-h-[90vh]">
         <button
           onClick={onClose}
           type="button"
@@ -116,7 +116,10 @@ export default function EditConsumableModal({
           </div>
         )}
 
-        <form onSubmit={handleSubmit} className="space-y-4">
+        <form
+          onSubmit={handleSubmit}
+          className="space-y-4 overflow-y-auto custom-scrollbar pr-2 flex-1"
+        >
           <div>
             <label className="block text-sm font-medium text-gray-700 mb-1">
               Nombre del artículo
@@ -131,7 +134,7 @@ export default function EditConsumableModal({
             />
           </div>
 
-          <div className="grid grid-cols-2 gap-4">
+          <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
             <div>
               <label className="block text-sm font-medium text-gray-700 mb-1">
                 Stock Mínimo
